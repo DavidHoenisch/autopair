@@ -9,13 +9,13 @@ local pairs_table = {
 }
 
 function M.setup()
-    vim.api.nvim_set_keymap('i', '<CR>', '<CR>:lua require("paired_autocomplete").handle_enter()<CR>', { noremap = true, silent = true })
-    vim.api.nvim_set_keymap('i', '<BS>', '<BS>:lua require("paired_autocomplete").handle_backspace()<CR>', { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('i', '<CR>', '<CR>:lua require("autopair").handle_enter()<CR>', { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('i', '<BS>', '<BS>:lua require("autopair").handle_backspace()<CR>', { noremap = true, silent = true })
 
     vim.api.nvim_exec([[
         augroup PairedAutocomplete
             autocmd!
-            autocmd InsertCharPre * lua require('paired_autocomplete').handle_char()
+            autocmd InsertCharPre * lua require('autopair').handle_char()
         augroup END
     ]], false)
 end
